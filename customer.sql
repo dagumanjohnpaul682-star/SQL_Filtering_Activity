@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `daguman_john_paul`
 --
-
+CREATE Database IF NOT EXISTS `daguman_john_paul`DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `daguman_john_paul`;
 -- --------------------------------------------------------
 
 --
@@ -65,3 +66,48 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+SELECT * FROM customer 
+WHERE city = 'Cebu';
+
+SELECT * FROM customer
+WHERE membership_level = 'Gold';
+
+SELECT * FROM customer
+WHERE customer_name LIKE 'A%' OR customer_name LIKE 'D%';
+
+SELECT * FROM customer
+WHERE city = 'Cebu' AND (membership_level = 'Selver' OR membership_level = 'Gold'); 
+
+SELECT * FROM customer
+WHERE join_date BETWEEN '2025-02-01' AND '2025-03-31';
+
+SELECT * FROM customer
+WHERE (city = 'Bohol' OR city = 'Tagbilaran')
+AND membership_level = 'Bronze';
+
+SELECT * FROM customer
+WHERE customer_name LIKE '%a%';
+
+SELECT * FROM customer
+WHERE city = 'Cebu'
+AND membership_level = 'Gold'
+AND join_date < '2025-03-01';
+
+SELECT * FROM customer
+WHERE (city = 'Bohol' OR city = 'Tagbilaran')
+AND join_date <= '2025-02-28'
+AND (membership_level = 'Silver' OR membership_level = 'Bronze');
+
+SELECT * FROM customer
+WHERE customer_id NOT IN (1,4,6)
+AND join_date > '2025-02-28';
+
+SELECT * FROM customer
+WHERE join_date BETWEEN '2025-04-01' AND '2025-04-30'
+AND (city = 'Cebu' OR city = 'Bohol')
+AND NOT membership_level = 'Bronze';
+
+
+
+
